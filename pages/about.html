@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Divine CPA, PLLC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.65) 0%, rgba(30, 64, 175, 0.65) 50%, rgba(59, 130, 246, 0.65) 100%), url('https://cdn.prod.website-files.com/683a4969614808c01cd0d34f/683a4969614808c01cd0d3a5_fcce2223ab829fa03bdde72150baf56f.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .story-section {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        .story-content h2 {
+            font-family: var(--font-display);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .story-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .team-section {
+            padding: 4rem 0;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .team-member {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        .team-photo {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-info {
+            padding: 2rem;
+        }
+        .team-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .team-info .title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .team-info .credentials {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .team-info p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .values-section {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .value-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .value-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .value-card p {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h1>Divine CPA</h1>
+                    <span class="tagline">See Beyond the Numbers</span>
+                </a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                        <li><a href="calculators.html">Calculators</a></li>
+                    </ul>
+                </li>
+                <li><a href="portal.html">Client Portal</a></li>
+                <li><a href="../index.html#contact" class="btn-contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>About Divine CPA</h1>
+            <p>Your trusted partner in financial success</p>
+        </div>
+    </div>
+
+    <!-- Our Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>Divine CPA, PLLC was founded on the belief that exceptional accounting services should combine technical expertise with genuine personal attention. Located in Mesa, Arizona, we've built our practice on the foundation of helping individuals and businesses navigate the complex world of taxes and accounting with confidence.</p>
+
+                <p>Our approach is simple: we see beyond the numbers to understand your unique story, goals, and challenges. Whether you're a small business owner looking to optimize your operations, an individual seeking tax savings, or someone facing IRS issues, we're here to provide expert guidance with a personal touch.</p>
+
+                <h2 style="margin-top: 2rem;">What Sets Us Apart</h2>
+                <p>We believe accounting is more than just number-crunching—it's about building relationships, understanding your vision, and helping you achieve your financial goals. Our team combines years of professional experience with a commitment to staying current on the latest tax laws and accounting practices.</p>
+
+                <p>When you work with Divine CPA, you're not just getting a tax preparer or bookkeeper—you're gaining a trusted advisor who's invested in your success. We take the time to understand your situation, explain complex concepts in plain language, and develop strategies tailored to your needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Our Team</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">Meet the dedicated professionals who make Divine CPA your trusted financial partner</p>
+
+            <div class="team-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); max-width: 900px; margin: 3rem auto;">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://www.divinecpa.com/~divinecp/images/IMG_6674.jpg" alt="Hattie V. Divine, CPA" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="team-info">
+                        <h3>Hattie V. Divine</h3>
+                        <span class="title">Certified Public Accountant</span>
+                        <span class="credentials">CPA (AZ State Certificate - May 2015)</span>
+                        <p>Active in public accounting since 2010, Hattie specializes in individual and business income tax returns, payroll taxes, and business bookkeeping. Originally from Wisconsin, she relocated to Arizona in 2007 and founded Divine CPA with a commitment to continuous learning and growth.</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--primary);">"You can never know it all, but can continue to learn and grow for yourself, for the team, and definitely to the benefit of clients."</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.875rem;">In her free time, Hattie enjoys spending time with family, swimming, and watching movies.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://www.divinecpa.com/~divinecp/images/dsc.jpg" alt="Shaye Divine" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="team-info">
+                        <h3>Shaye Divine</h3>
+                        <span class="title">Office Manager</span>
+                        <span class="credentials">Client Services & Operations</span>
+                        <p>Shaye manages scheduling, bookkeeping, document reception, and serves as the initial point of contact for clients. Always ready to assist, she ensures a smooth and welcoming experience for everyone who works with Divine CPA.</p>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">When she's not in the office, Shaye enjoys hiking in Arizona with her boyfriend and their dog, Lady.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 style="text-align: center; font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Our Values</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">The principles that guide everything we do</p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Professionalism</h3>
+                    <p>By combining the expertise, experience, and energy in our office, each client receives close personal and professional attention. We maintain high standards that exceed client expectations.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>Responsiveness</h3>
+                    <p>Our firm is dedicated to being responsive to client inquiries. We provide competent advice and accurate answers within reasonable timeframes, leveraging technology to deliver secure information promptly.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>An accounting firm is known for the quality of its service and we demand high standards of ourselves. We're committed to continuous professional education to improve our financial, tax, and technical knowledge. Our primary goal is to provide insightful advice to enable informed decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 4rem 0; text-align: center;">
+        <div class="container">
+            <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Ready to Work Together?</h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">Experience the Divine CPA difference. Let's discuss how we can help you achieve your financial goals.</p>
+            <a href="../index.html#contact" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">Schedule Your Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Divine CPA, PLLC</h3>
+                    <p class="tagline">See Beyond the Numbers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                        <li><a href="calculators.html">Calculators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p style="color: #9ca3af;">Phone: (480) 597-6428</p>
+                    <p style="color: #9ca3af;">Mesa, Arizona</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Divine CPA, PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

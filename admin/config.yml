@@ -1,0 +1,70 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Uncomment for local development
+# local_backend: true
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "newsletter"
+    label: "Newsletter"
+    folder: "_newsletters"
+    create: true
+    slug: "{{year}}-{{month}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string", default: "Tax & Finance Insights"}
+      - {label: "Issue Date", name: "date", widget: "datetime", format: "MMMM YYYY"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Publish", name: "published", widget: "boolean", default: true}
+
+      - label: "Feature Articles"
+        name: "feature_articles"
+        widget: "list"
+        min: 1
+        max: 5
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Icon Type", name: "icon", widget: "select", options: ["car", "money", "home", "chart", "briefcase"]}
+          - {label: "Read Time (minutes)", name: "read_time", widget: "number", default: 3}
+          - {label: "Content", name: "content", widget: "markdown"}
+          - label: "Key Takeaways"
+            name: "takeaways"
+            widget: "list"
+            required: false
+            field: {label: "Takeaway", name: "item", widget: "string"}
+
+      - label: "Tax Tips"
+        name: "tax_tips"
+        widget: "list"
+        min: 1
+        max: 5
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "content", widget: "markdown"}
+
+      - label: "QuickBooks Tip"
+        name: "quickbooks_tip"
+        widget: "object"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "content", widget: "markdown"}
+          - label: "Key Points"
+            name: "key_points"
+            widget: "list"
+            required: false
+            field: {label: "Point", name: "item", widget: "string"}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "_data/settings.yml"
+        fields:
+          - {label: "Site Title", name: "site_title", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Location", name: "location", widget: "string"}
+          - {label: "Business Hours", name: "hours", widget: "text"}

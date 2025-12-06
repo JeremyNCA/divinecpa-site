@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Newsletter - Divine CPA, PLLC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.65) 0%, rgba(30, 64, 175, 0.65) 50%, rgba(59, 130, 246, 0.65) 100%), url('https://cdn.prod.website-files.com/683a4969614808c01cd0d34f/683a4969614808c01cd0d3a5_fcce2223ab829fa03bdde72150baf56f.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .current-issue {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+        .issue-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .newsletter-content {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        .badge-feature {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        .badge-tips {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        .badge-quickbooks {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+        .article-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        .article-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .article-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .icon-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+            color: var(--primary);
+        }
+        .icon-green {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            color: #059669;
+        }
+        .icon-orange {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
+            color: #d97706;
+        }
+        .article-meta {
+            flex: 1;
+        }
+        .article-card h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .read-time {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .key-takeaway {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .key-takeaway h4 {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .key-takeaway ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+        .key-takeaway li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid #10b981;
+        }
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .tip-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .tip-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .tip-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .newsletter-sidebar {
+            background: var(--bg-light);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+        .sidebar-section h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .archive-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .archive-list li {
+            margin-bottom: 0.75rem;
+        }
+        .archive-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .archive-list a:hover {
+            color: var(--primary);
+        }
+        .subscribe-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .subscribe-box h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+        .subscribe-box p {
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .subscribe-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .subscribe-box button {
+            width: 100%;
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .subscribe-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .section-divider {
+            text-align: center;
+            margin: 4rem 0 3rem;
+            position: relative;
+        }
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--bg-gray), transparent);
+        }
+        .section-divider h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            background: white;
+            display: inline-block;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h1>Divine CPA</h1>
+                    <span class="tagline">See Beyond the Numbers</span>
+                </a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                        <li><a href="calculators.html">Calculators</a></li>
+                    </ul>
+                </li>
+                <li><a href="portal.html">Client Portal</a></li>
+                <li><a href="../index.html#contact" class="btn-contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Newsletter</h1>
+            <p>Monthly tax tips, financial insights, and QuickBooks best practices</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="newsletter-content">
+        <div class="container">
+            <div class="current-issue">
+                <span class="issue-badge">Current Issue: December 2025</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 3rem; align-items: start;">
+                <!-- Articles Column -->
+                <div>
+                    <!-- Feature Articles Section -->
+                    <div>
+                        <span class="section-badge badge-feature">Feature Articles</span>
+
+                        <!-- Article 1 -->
+                        <article class="article-card">
+                            <div class="article-header">
+                                <div class="article-icon icon-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </div>
+                                <div class="article-meta">
+                                    <h2>New Tax Break: Deduct Your Car Loan Interest</h2>
+                                    <div class="read-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        3 min read
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>The One Big Beautiful Bill Act just introduced a valuable new deduction that could save you thousands. If you've financed a vehicle recently—or are planning to—you might be eligible to deduct up to <strong>$10,000 in car loan interest annually</strong> through 2028.</p>
+
+                            <div class="key-takeaway">
+                                <h4>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                    Key Requirements
+                                </h4>
+                                <ul>
+                                    <li><strong>Income limits:</strong> Phases out starting at $100,000 MAGI ($200,000 joint); eliminated at $150,000 ($250,000 joint)</li>
+                                    <li><strong>Vehicle requirements:</strong> Must be under 14,000 lbs and assembled in the United States</li>
+                                    <li><strong>Eligible vehicles:</strong> Passenger cars, minivans, vans, SUVs, pickup trucks, or motorcycles</li>
+                                    <li><strong>Loan requirements:</strong> First-lien secured loan for personal use, originated after 2024</li>
+                                </ul>
+                            </div>
+
+                            <p>Refinancing is permitted under specific conditions, and lenders will file information returns showing your annual interest paid—making it easy to claim this deduction on your tax return.</p>
+                        </article>
+
+                        <!-- Article 2 -->
+                        <article class="article-card">
+                            <div class="article-header">
+                                <div class="article-icon icon-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                                <div class="article-meta">
+                                    <h2>Turn Business Losses Into Tax Savings With NOLs</h2>
+                                    <div class="read-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        4 min read
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>Had a tough year? Net Operating Loss (NOL) deductions can help your business weather the storm by averaging income across multiple years. This powerful tax strategy can ease the financial pain when revenue takes a hit.</p>
+
+                            <div class="key-takeaway">
+                                <h4>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                    What Qualifies as NOL?
+                                </h4>
+                                <ul>
+                                    <li>Business operations that generate a loss</li>
+                                    <li>Casualty or theft losses from federally declared disasters</li>
+                                    <li>Rental property income losses</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Important limitations:</strong> NOL deductions cannot offset more than 80% of your taxable income, with excess amounts carrying forward indefinitely. The excess business loss limitation (now permanent as of 2025) caps noncorporate business losses at <strong>$313,000 individually</strong> or <strong>$626,000 for joint filers</strong> plus other income annually.</p>
+
+                            <p>If you have multiple NOLs, they apply in chronological order against modified taxable income—strategic planning can maximize your benefit.</p>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="article-card">
+                            <div class="article-header">
+                                <div class="article-icon icon-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="article-meta">
+                                    <h2>Remote Work Tax Traps Every Employer Should Know</h2>
+                                    <div class="read-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        4 min read
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>Remote work isn't just changing where we work—it's creating a complex web of state tax obligations that can catch both employers and employees off guard.</p>
+
+                            <p><strong>For employees:</strong> You may face taxation in multiple states based on domicile or residency status. Typically, spending 183+ days in a state can trigger residency and tax obligations—even if you're just working remotely for an out-of-state employer.</p>
+
+                            <div class="key-takeaway">
+                                <h4>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                    Employer Tax Nexus Alert
+                                </h4>
+                                <ul>
+                                    <li>Having remote employees can establish "nexus" in multiple states</li>
+                                    <li>May trigger income, payroll, franchise, gross receipts, and sales tax obligations</li>
+                                    <li>Compliance requirements vary significantly by state</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Home office deductions:</strong> Unfortunately, employees generally cannot claim home office deductions under current tax law. However, employers can reimburse business expenses through accountable plans, making reimbursements both deductible for the company and excludable from employee income—a win-win arrangement.</p>
+                        </article>
+                    </div>
+
+                    <!-- Tax Tips Section -->
+                    <div class="section-divider">
+                        <h2>Quick Tax Tips</h2>
+                    </div>
+
+                    <span class="section-badge badge-tips">Tax Strategies</span>
+
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <div class="tip-number">1</div>
+                            <h3>Simplify Travel Expenses With Per Diem Rates</h3>
+                            <p>Skip the receipt hassle! The high-low method provides simplified employee reimbursement rates: <strong>$225 standard</strong> and <strong>$319 for high-cost locations</strong> (October 2025–September 2026). Employees only need to document time, place, and business purpose—no receipts required. Reimbursements are tax-free and not subject to payroll withholding. <em>Note: Cannot be used for 10%+ business owners.</em></p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-number">2</div>
+                            <h3>Year-End Strategy: Accelerate Your Deductions</h3>
+                            <p>With expanded state and local tax deductions, your itemized deductions might exceed the standard deduction. Consider accelerating qualified medical expenses (those exceeding 7.5% of AGI), home mortgage interest (up to $750,000 debt), and charitable contributions into 2025 to maximize your tax benefit this year.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <div class="tip-number">3</div>
+                            <h3>Holiday Gifts: Know the Tax Consequences</h3>
+                            <p>Planning employee gifts? Achievement awards and de minimis gifts (like holiday turkeys or hams) can be deductible to employers and tax-free to employees when requirements are met. However, year-end <strong>cash bonuses are always taxable compensation</strong>—plan accordingly for payroll tax obligations.</p>
+                        </div>
+                    </div>
+
+                    <!-- QuickBooks Section -->
+                    <div class="section-divider">
+                        <h2>QuickBooks Corner</h2>
+                    </div>
+
+                    <span class="section-badge badge-quickbooks">Software Tips</span>
+
+                    <article class="article-card">
+                        <div class="article-header">
+                            <div class="article-icon icon-orange">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <div class="article-meta">
+                                <h2>Master Bill Tracking in QuickBooks Online</h2>
+                                <div class="read-time">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    3 min read
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Never miss a vendor payment again. QuickBooks Online provides powerful bill tracking through the Expenses section, helping you maintain great vendor relationships while staying on top of cash flow.</p>
+
+                        <div class="key-takeaway">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                Essential Reports for Bill Management
+                            </h4>
+                            <ul>
+                                <li><strong>Accounts Payable Aging Summary</strong> - See what's due and when</li>
+                                <li><strong>Bill Payment List</strong> - Track all payments made</li>
+                                <li><strong>Unpaid Bills</strong> - Never miss a due date</li>
+                                <li><strong>Vendor Balance Detail</strong> - Complete vendor payment history</li>
+                            </ul>
+                        </div>
+
+                        <p>The Cash Flow Dashboard and Statement of Cash Flows reports help you track obligations, while the Profit and Loss report shows how vendor expenses impact profitability.</p>
+
+                        <p><strong>Pro tip:</strong> QuickBooks Bill Pay Basic (included with most subscriptions) accepts invoice uploads and creates pre-filled bills automatically. You can pay vendors via ACH or paper check—streamlining your entire AP process.</p>
+                    </article>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="newsletter-sidebar">
+                    <div class="sidebar-section">
+                        <div class="subscribe-box">
+                            <h3>Never Miss An Issue</h3>
+                            <p>Get monthly tax tips, financial strategies, and QuickBooks insights delivered to your inbox.</p>
+                            <form>
+                                <input type="email" placeholder="Your email address" required>
+                                <button type="submit">Subscribe Now</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Newsletter Archive</h3>
+                        <ul class="archive-list">
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    November 2025
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    October 2025
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    September 2025
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    View All Archives
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Have Questions?</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Our team is here to help you navigate these tax strategies and make them work for your situation.</p>
+                        <a href="../index.html#contact" class="btn btn-primary" style="width: 100%; margin-top: 1rem; text-align: center; display: inline-block;">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Divine CPA, PLLC</h3>
+                    <p class="tagline">See Beyond the Numbers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p style="color: #9ca3af;">Phone: (480) 597-6428</p>
+                    <p style="color: #9ca3af;">Mesa, Arizona</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Divine CPA, PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

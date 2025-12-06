@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculators - Divine CPA, PLLC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.65) 0%, rgba(30, 64, 175, 0.65) 50%, rgba(59, 130, 246, 0.65) 100%), url('https://cdn.prod.website-files.com/683a4969614808c01cd0d34f/683a4969614808c01cd0d3a5_fcce2223ab829fa03bdde72150baf56f.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .calculators-section {
+            padding: 4rem 0;
+        }
+        .calculator-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .tab-button {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .tab-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .tab-button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .calculator-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-xl);
+        }
+        .calculator-container.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .calculator-container h2 {
+            font-family: var(--font-display);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .calc-form-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .calc-input-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .calc-input-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .calc-input-group input,
+        .calc-input-group select {
+            padding: 0.875rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        .calc-input-group input:focus,
+        .calc-input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .calc-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--secondary);
+            display: none;
+        }
+        .calc-result.show {
+            display: block;
+        }
+        .calc-result h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+        .result-breakdown {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+        .result-item strong {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h1>Divine CPA</h1>
+                    <span class="tagline">See Beyond the Numbers</span>
+                </a>
+            </div>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                        <li><a href="calculators.html">Calculators</a></li>
+                    </ul>
+                </li>
+                <li><a href="portal.html">Client Portal</a></li>
+                <li><a href="../index.html#contact" class="btn-contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Financial Calculators</h1>
+            <p>Plan your financial future with our interactive tools</p>
+        </div>
+    </div>
+
+    <!-- Calculators Section -->
+    <section class="calculators-section">
+        <div class="container">
+            <div class="calculator-tabs">
+                <button class="tab-button active" data-calc="tax-estimate">Tax Estimate</button>
+                <button class="tab-button" data-calc="retirement">Retirement Savings</button>
+                <button class="tab-button" data-calc="loan">Loan Payment</button>
+                <button class="tab-button" data-calc="savings">Savings Goal</button>
+            </div>
+
+            <!-- Tax Estimate Calculator -->
+            <div class="calculator-container active" id="tax-estimate">
+                <h2>Income Tax Estimate Calculator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Estimate your federal income tax liability</p>
+
+                <form class="calc-form-grid" id="taxForm">
+                    <div class="calc-input-group">
+                        <label>Filing Status</label>
+                        <select id="taxFilingStatus" required>
+                            <option value="single">Single</option>
+                            <option value="married">Married Filing Jointly</option>
+                            <option value="married-separate">Married Filing Separately</option>
+                            <option value="hoh">Head of Household</option>
+                        </select>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Gross Annual Income</label>
+                        <input type="number" id="taxIncome" placeholder="$50,000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Deductions (Standard or Itemized)</label>
+                        <input type="number" id="taxDeductions" placeholder="$14,600">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate Tax</button>
+                </form>
+
+                <div class="calc-result" id="taxResult">
+                    <h3>Estimated Tax Liability</h3>
+                    <div class="result-value" id="taxAmount">$0</div>
+                    <div class="result-breakdown">
+                        <div class="result-item">
+                            <span>Gross Income:</span>
+                            <strong id="taxGross">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Deductions:</span>
+                            <strong id="taxDeduct">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Taxable Income:</span>
+                            <strong id="taxTaxable">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Effective Tax Rate:</span>
+                            <strong id="taxRate">0%</strong>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-secondary);">
+                        <strong>Note:</strong> This is a simplified estimate for federal income tax only. Actual tax liability may vary based on credits, state taxes, and other factors.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Retirement Calculator -->
+            <div class="calculator-container" id="retirement">
+                <h2>Retirement Savings Calculator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Project your retirement savings growth</p>
+
+                <form class="calc-form-grid" id="retirementForm">
+                    <div class="calc-input-group">
+                        <label>Current Age</label>
+                        <input type="number" id="retireCurrentAge" placeholder="35" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Retirement Age</label>
+                        <input type="number" id="retireRetirementAge" placeholder="65" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Current Savings</label>
+                        <input type="number" id="retireCurrentSavings" placeholder="$50,000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Monthly Contribution</label>
+                        <input type="number" id="retireMonthlyContribution" placeholder="$500" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Expected Annual Return (%)</label>
+                        <input type="number" id="retireReturnRate" placeholder="7" step="0.1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate Retirement</button>
+                </form>
+
+                <div class="calc-result" id="retirementResult">
+                    <h3>Retirement Projection</h3>
+                    <div class="result-value" id="retireAmount">$0</div>
+                    <div class="result-breakdown">
+                        <div class="result-item">
+                            <span>Years Until Retirement:</span>
+                            <strong id="retireYears">0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Contributions:</span>
+                            <strong id="retireContributions">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Investment Growth:</span>
+                            <strong id="retireGrowth">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Final Balance:</span>
+                            <strong id="retireFinal">$0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Calculator -->
+            <div class="calculator-container" id="loan">
+                <h2>Loan Payment Calculator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Calculate your monthly loan payments</p>
+
+                <form class="calc-form-grid" id="loanForm">
+                    <div class="calc-input-group">
+                        <label>Loan Amount</label>
+                        <input type="number" id="loanAmount" placeholder="$200,000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Interest Rate (%)</label>
+                        <input type="number" id="loanRate" placeholder="5.5" step="0.01" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Loan Term (years)</label>
+                        <input type="number" id="loanTerm" placeholder="30" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate Payment</button>
+                </form>
+
+                <div class="calc-result" id="loanResult">
+                    <h3>Monthly Payment</h3>
+                    <div class="result-value" id="loanPayment">$0</div>
+                    <div class="result-breakdown">
+                        <div class="result-item">
+                            <span>Loan Amount:</span>
+                            <strong id="loanPrincipal">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Interest Paid:</span>
+                            <strong id="loanInterest">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Amount Paid:</span>
+                            <strong id="loanTotal">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Number of Payments:</span>
+                            <strong id="loanPayments">0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Goal Calculator -->
+            <div class="calculator-container" id="savings">
+                <h2>Savings Goal Calculator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Determine how much to save monthly to reach your goal</p>
+
+                <form class="calc-form-grid" id="savingsForm">
+                    <div class="calc-input-group">
+                        <label>Savings Goal</label>
+                        <input type="number" id="savingsGoal" placeholder="$25,000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Time Frame (years)</label>
+                        <input type="number" id="savingsYears" placeholder="5" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Current Savings</label>
+                        <input type="number" id="savingsCurrent" placeholder="$5,000" required>
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Expected Annual Return (%)</label>
+                        <input type="number" id="savingsRate" placeholder="4" step="0.1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calculate Savings</button>
+                </form>
+
+                <div class="calc-result" id="savingsResult">
+                    <h3>Monthly Savings Required</h3>
+                    <div class="result-value" id="savingsMonthly">$0</div>
+                    <div class="result-breakdown">
+                        <div class="result-item">
+                            <span>Savings Goal:</span>
+                            <strong id="savingsGoalAmount">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Current Savings:</span>
+                            <strong id="savingsCurrentAmount">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Needed:</span>
+                            <strong id="savingsNeeded">$0</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Contributions:</span>
+                            <strong id="savingsContributions">$0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 4rem auto; padding: 2rem; background: var(--bg-light); border-radius: 1rem; text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Need Professional Guidance?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">These calculators provide estimates. For personalized financial planning and tax strategies, consult with our expert team.</p>
+                <a href="../index.html#contact" class="btn btn-primary">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Divine CPA, PLLC</h3>
+                    <p class="tagline">See Beyond the Numbers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="tax-center.html">Tax Center</a></li>
+                        <li><a href="calculators.html">Calculators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p style="color: #9ca3af;">Phone: (480) 597-6428</p>
+                    <p style="color: #9ca3af;">Mesa, Arizona</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Divine CPA, PLLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all buttons and containers
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.calculator-container').forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked button and corresponding container
+                button.classList.add('active');
+                const calcId = button.getAttribute('data-calc');
+                document.getElementById(calcId).classList.add('active');
+            });
+        });
+
+        // Tax Calculator
+        document.getElementById('taxForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const income = parseFloat(document.getElementById('taxIncome').value);
+            const deductions = parseFloat(document.getElementById('taxDeductions').value) || 14600;
+            const status = document.getElementById('taxFilingStatus').value;
+
+            const taxableIncome = Math.max(0, income - deductions);
+
+            // Simplified 2024 tax brackets (single filer)
+            let tax = 0;
+            if (taxableIncome <= 11600) {
+                tax = taxableIncome * 0.10;
+            } else if (taxableIncome <= 47150) {
+                tax = 1160 + (taxableIncome - 11600) * 0.12;
+            } else if (taxableIncome <= 100525) {
+                tax = 5426 + (taxableIncome - 47150) * 0.22;
+            } else if (taxableIncome <= 191950) {
+                tax = 17168.50 + (taxableIncome - 100525) * 0.24;
+            } else if (taxableIncome <= 243725) {
+                tax = 39110.50 + (taxableIncome - 191950) * 0.32;
+            } else if (taxableIncome <= 609350) {
+                tax = 55678.50 + (taxableIncome - 243725) * 0.35;
+            } else {
+                tax = 183647.25 + (taxableIncome - 609350) * 0.37;
+            }
+
+            const effectiveRate = (tax / income * 100).toFixed(2);
+
+            document.getElementById('taxAmount').textContent = '$' + tax.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('taxGross').textContent = '$' + income.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('taxDeduct').textContent = '$' + deductions.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('taxTaxable').textContent = '$' + taxableIncome.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('taxRate').textContent = effectiveRate + '%';
+            document.getElementById('taxResult').classList.add('show');
+        });
+
+        // Retirement Calculator
+        document.getElementById('retirementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const currentAge = parseInt(document.getElementById('retireCurrentAge').value);
+            const retirementAge = parseInt(document.getElementById('retireRetirementAge').value);
+            const currentSavings = parseFloat(document.getElementById('retireCurrentSavings').value);
+            const monthlyContribution = parseFloat(document.getElementById('retireMonthlyContribution').value);
+            const annualReturn = parseFloat(document.getElementById('retireReturnRate').value) / 100;
+
+            const years = retirementAge - currentAge;
+            const months = years * 12;
+            const monthlyRate = annualReturn / 12;
+
+            // Future value of current savings
+            const futureValueCurrent = currentSavings * Math.pow(1 + monthlyRate, months);
+
+            // Future value of monthly contributions
+            const futureValueContributions = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+
+            const totalValue = futureValueCurrent + futureValueContributions;
+            const totalContributions = monthlyContribution * months;
+            const totalGrowth = totalValue - currentSavings - totalContributions;
+
+            document.getElementById('retireAmount').textContent = '$' + totalValue.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('retireYears').textContent = years + ' years';
+            document.getElementById('retireContributions').textContent = '$' + totalContributions.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('retireGrowth').textContent = '$' + totalGrowth.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('retireFinal').textContent = '$' + totalValue.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('retirementResult').classList.add('show');
+        });
+
+        // Loan Calculator
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const principal = parseFloat(document.getElementById('loanAmount').value);
+            const annualRate = parseFloat(document.getElementById('loanRate').value) / 100;
+            const years = parseInt(document.getElementById('loanTerm').value);
+
+            const monthlyRate = annualRate / 12;
+            const numberOfPayments = years * 12;
+
+            const monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+
+            const totalPaid = monthlyPayment * numberOfPayments;
+            const totalInterest = totalPaid - principal;
+
+            document.getElementById('loanPayment').textContent = '$' + monthlyPayment.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('loanPrincipal').textContent = '$' + principal.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('loanInterest').textContent = '$' + totalInterest.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('loanTotal').textContent = '$' + totalPaid.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('loanPayments').textContent = numberOfPayments + ' months';
+            document.getElementById('loanResult').classList.add('show');
+        });
+
+        // Savings Goal Calculator
+        document.getElementById('savingsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const goal = parseFloat(document.getElementById('savingsGoal').value);
+            const years = parseInt(document.getElementById('savingsYears').value);
+            const currentSavings = parseFloat(document.getElementById('savingsCurrent').value);
+            const annualReturn = parseFloat(document.getElementById('savingsRate').value) / 100;
+
+            const months = years * 12;
+            const monthlyRate = annualReturn / 12;
+
+            // Calculate future value of current savings
+            const futureValueCurrent = currentSavings * Math.pow(1 + monthlyRate, months);
+
+            // Amount still needed
+            const amountNeeded = goal - futureValueCurrent;
+
+            // Monthly contribution needed
+            const monthlyContribution = amountNeeded / ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+
+            const totalContributions = monthlyContribution * months;
+
+            document.getElementById('savingsMonthly').textContent = '$' + monthlyContribution.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('savingsGoalAmount').textContent = '$' + goal.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('savingsCurrentAmount').textContent = '$' + currentSavings.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('savingsNeeded').textContent = '$' + amountNeeded.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('savingsContributions').textContent = '$' + totalContributions.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('savingsResult').classList.add('show');
+        });
+    </script>
+</body>
+</html>

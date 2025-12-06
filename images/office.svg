@@ -1,0 +1,25 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F3F4F6"/>
+  <!-- Desk -->
+  <rect x="100" y="350" width="600" height="200" fill="#6B7280"/>
+  <rect x="100" y="350" width="600" height="20" fill="#4B5563"/>
+  <!-- Computer Monitor -->
+  <rect x="250" y="200" width="300" height="180" fill="#1F2937"/>
+  <rect x="270" y="220" width="260" height="140" fill="#3B82F6"/>
+  <rect x="380" y="380" width="40" height="60" fill="#4B5563"/>
+  <rect x="360" y="440" width="80" height="10" fill="#6B7280"/>
+  <!-- Lamp -->
+  <circle cx="150" cy="280" r="30" fill="#F59E0B"/>
+  <rect x="145" y="280" width="10" height="70" fill="#9CA3AF"/>
+  <circle cx="150" cy="350" r="15" fill="#6B7280"/>
+  <!-- Books -->
+  <rect x="550" y="300" width="40" height="50" fill="#1e40af"/>
+  <rect x="595" y="300" width="40" height="50" fill="#059669"/>
+  <rect x="640" y="300" width="40" height="50" fill="#1e40af"/>
+  <!-- Plant -->
+  <ellipse cx="650" cy="280" rx="30" ry="40" fill="#059669"/>
+  <ellipse cx="630" cy="270" rx="25" ry="35" fill="#047857"/>
+  <ellipse cx="670" cy="275" rx="20" ry="30" fill="#047857"/>
+  <rect x="645" y="280" width="10" height="70" fill="#92400E"/>
+  <circle cx="650" cy="350" r="20" fill="#D97706"/>
+</svg>
