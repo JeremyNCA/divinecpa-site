@@ -9,6 +9,103 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  # PAGES
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage"
+        name: "home"
+        file: "_data/pages/home.yml"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - {label: "Primary CTA Text", name: "cta_primary", widget: "string"}
+              - {label: "Secondary CTA Text", name: "cta_secondary", widget: "string"}
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Lead Text", name: "lead", widget: "text"}
+              - {label: "Body Text", name: "body", widget: "text"}
+
+          - label: "Values"
+            name: "values"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            max: 3
+            fields:
+              - {label: "Number", name: "number", widget: "string"}
+              - {label: "Label", name: "label", widget: "string"}
+
+      - label: "About Page"
+        name: "about"
+        file: "_data/pages/about.yml"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "string"}
+
+          - label: "Our Story"
+            name: "story"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Paragraph 1", name: "para1", widget: "text"}
+              - {label: "Paragraph 2", name: "para2", widget: "text"}
+              - {label: "Paragraph 3", name: "para3", widget: "text"}
+              - {label: "Paragraph 4", name: "para4", widget: "text"}
+
+          - label: "Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+  # SERVICES
+  - name: "services"
+    label: "Services"
+    folder: "_services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Order", name: "order", widget: "number", default: 1}
+      - label: "Service Items"
+        name: "items"
+        widget: "list"
+        field: {label: "Item", name: "item", widget: "string"}
+
+  # TEAM MEMBERS
+  - name: "team"
+    label: "Team Members"
+    folder: "_team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Credentials", name: "credentials", widget: "string", required: false}
+      - {label: "Photo URL", name: "photo", widget: "image", required: false}
+      - {label: "Bio", name: "bio", widget: "markdown"}
+      - {label: "Quote", name: "quote", widget: "text", required: false}
+      - {label: "Personal Info", name: "personal", widget: "text", required: false}
+      - {label: "Order", name: "order", widget: "number", default: 1}
+
+  # NEWSLETTER
   - name: "newsletter"
     label: "Newsletter"
     folder: "_newsletters"
@@ -57,6 +154,7 @@ collections:
             required: false
             field: {label: "Point", name: "item", widget: "string"}
 
+  # SITE SETTINGS
   - name: "settings"
     label: "Site Settings"
     files:
@@ -65,6 +163,27 @@ collections:
         file: "_data/settings.yml"
         fields:
           - {label: "Site Title", name: "site_title", widget: "string"}
-          - {label: "Phone", name: "phone", widget: "string"}
-          - {label: "Location", name: "location", widget: "string"}
-          - {label: "Business Hours", name: "hours", widget: "text"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+
+          - label: "Contact Information"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Phone", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "Location", name: "location", widget: "string"}
+              - {label: "Business Hours", name: "hours", widget: "text"}
+
+          - label: "Social Media"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+              - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
+              - {label: "Twitter URL", name: "twitter", widget: "string", required: false}
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Copyright Text", name: "copyright", widget: "string"}

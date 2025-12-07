@@ -1,0 +1,26 @@
+hero:
+  title: "Expert Tax & Accounting Services in Mesa, AZ"
+  subtitle: "A well-balanced blend of personal service and expertise for your financial success"
+  cta_primary: "Get Started"
+  cta_secondary: "(480) 597-6428"
+
+about:
+  heading: "See Beyond the Numbers"
+  lead: "At Divine CPA, we believe that accounting is more than just crunching numbers—it's about understanding your story and helping you achieve your financial goals."
+  body: "Our goal is to offer a well-balanced blend of personal service and expertise. We work closely with our clients to provide customized solutions that address their unique tax and accounting needs."
+
+values:
+  - title: "Professionalism"
+    description: "Close personal and professional attention to each client"
+  - title: "Responsiveness"
+    description: "Dedicated to providing timely, competent advice"
+  - title: "Quality"
+    description: "High standards and continuous professional education"
+
+stats:
+  - number: "15+"
+    label: "Years of Experience"
+  - number: "500+"
+    label: "Satisfied Clients"
+  - number: "100%"
+    label: "Dedicated Support"

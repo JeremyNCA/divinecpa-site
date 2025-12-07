@@ -1,6 +1,18 @@
 site_title: "Divine CPA, PLLC"
-phone: "(480) 597-6428"
-location: "Mesa, Arizona"
-hours: |
-  Monday - Friday
-  9:00 AM - 5:00 PM
+tagline: "See Beyond the Numbers"
+
+contact:
+  phone: "(480) 597-6428"
+  email: ""
+  location: "Mesa, Arizona"
+  hours: |
+    Monday - Friday
+    9:00 AM - 5:00 PM
+
+social:
+  facebook: ""
+  linkedin: ""
+  twitter: ""
+
+footer:
+  copyright: "© 2024 Divine CPA, PLLC. All rights reserved."
